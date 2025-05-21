@@ -1,21 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
+const paymentRoutes = require('./routes/payments');
+
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
+app.get('/', (req,res)=>{
+    res.send('<h1>Welcome to PayTrack API</h1>');
+})
+app.use('/api/payments', paymentRoutes);
 
-let payments = [
-  { id: 1, amount: 250, recipient: 'John Doe', date: '2025-05-20' },
-  { id: 2, amount: 100, recipient: 'Jane Smith', date: '2025-05-21' }
-];
-
-app.get('/api/payments', (req, res) => {
-  res.json(payments);
-});
-
-app.post('/api/payments', (req, res) => {
-  const { amount, recipient } = req.body;
-  const newPayment = { id: payments.length + 1, amount, recipient, date: new Date().toISOString() };
-  payments.push(newPayment);
-  res.status(201).json(newPayment);
-});
-
-app.listen(5000, () => console.log('Backend running on port 5000'));
+app.listen(5001, () => console.log('Backend running on port 5001'));
