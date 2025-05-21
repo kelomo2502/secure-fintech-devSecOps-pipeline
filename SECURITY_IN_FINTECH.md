@@ -219,3 +219,38 @@ Amazon Elastic Kubernetes Service (EKS) is a fully managed service for running K
 | **Scalability**         | Supports auto-scaling of nodes & pods             |
 | **High Availability**   | Runs across multiple AZs                          |
 | **Flexibility**         | Works with EC2, Fargate, and self-managed nodes   |
+
+### EKS Architecture Overview
+
+- Control plane: Managed by AWS (you don’t pay for it directly)
+- Worker nodes: EC2 instances or Fargate tasks that run your containers
+- Networking: Uses VPC, security groups, and ENIs
+- CI/CD: Integrated easily with GitHub Actions, ArgoCD, Helm
+
+## Use Cases for EKS in FinTech
+
+*Why Use EKS in FinTech Applications?*
+FinTech workloads require:
+
+- High availability: Ensure 24/7 uptime for banking or payment systems
+- Security & Compliance: Fine-grained IAM, encryption, audit trails
+- Scalability: Handle traffic surges during market volatility or sales
+- Modularity: Microservices-based platforms like payment gateways or fraud detection systems
+
+## Real Use Cases
+
+| Use Case                | Description                                                           |
+| ----------------------- | --------------------------------------------------------------------- |
+| **Digital Wallets**     | Deploy wallet services in isolated Kubernetes pods                    |
+| **Payment Gateways**    | Autoscale transaction processing services with Kubernetes             |
+| **Fraud Detection**     | Run ML models in containers on-demand using EKS with GPU nodes        |
+| **API Gateways**        | Deploy API-first FinTech products with rate limiting and monitoring   |
+| **Analytics Pipelines** | Use EKS to orchestrate real-time data flows via Apache Kafka or Spark |
+
+## Summary
+
+| Component      | Role in FinTech                                         |
+| -------------- | ------------------------------------------------------- |
+| **AWS**        | Core cloud infrastructure for secure, scalable services |
+| **Amazon EKS** | Container orchestration for deploying modern apps       |
+| **Use Cases**  | Payment systems, fraud analysis, wallets, microservices |
