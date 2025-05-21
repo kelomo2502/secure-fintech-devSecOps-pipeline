@@ -188,5 +188,34 @@ Root_folder
   - AWS_SECRET_ACCESS_KEY
   - DOCKER_USERNAME / DOCKER_PASSWORD (if using DockerHub)
   - EKS_CLUSTER_NAME
-  - AWS_ROLE_TO_ASSUME	IAM Role ARN for GitHub OIDC (if using)
+  - AWS_ROLE_TO_ASSUME IAM Role ARN for GitHub OIDC (if using)
   - REGION
+
+## Understand AWS Fundamentals
+
+- Amazon Web Services (AWS) is the world’s most widely adopted cloud platform, offering over 200 fully featured services including:
+- Compute (EC2, Lambda)
+- Storage (S3, EBS)
+- Networking (VPC, Route 53)
+- Databases (RDS, DynamoDB)
+- Security & Compliance (IAM, KMS, CloudTrail)
+
+## Core Benefits for FinTech
+
+- Global infrastructure with low latency
+- Security-first architecture (data encryption, access control)
+- Scalability to handle usage spikes
+- Regulatory compliance (PCI-DSS, SOC, ISO, etc.)
+
+## Amazon EKS (Kubernetes on AWS)
+
+Key EKS Features:
+Amazon Elastic Kubernetes Service (EKS) is a fully managed service for running Kubernetes clusters on AWS without managing control plane infrastructure.
+
+| Feature                 | Description                                       |
+| ----------------------- | ------------------------------------------------- |
+| **Fully Managed**       | AWS runs and scales the Kubernetes control plane  |
+| **Integrated Security** | IAM for auth, VPC for networking, KMS for secrets |
+| **Scalability**         | Supports auto-scaling of nodes & pods             |
+| **High Availability**   | Runs across multiple AZs                          |
+| **Flexibility**         | Works with EC2, Fargate, and self-managed nodes   |
