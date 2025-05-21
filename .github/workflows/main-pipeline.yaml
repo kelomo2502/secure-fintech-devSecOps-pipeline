@@ -1,0 +1,35 @@
+name: Main FinTech CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build Application
+    uses: ./.github/workflows/build.yaml
+
+  test:
+    name: Run Tests
+    needs: build
+    uses: ./.github/workflows/test.yaml
+
+  dockerize:
+    name: Dockerize and Push
+    needs: test
+    uses: ./.github/workflows/dockerize.yaml
+    with:
+      image_name: fintech-app
+    secrets: inherit
+
+  deploy:
+    name: Deploy to EKS
+    needs: dockerize
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      image_name: fintech-app
+      image_tag: ${{ needs.dockerize.outputs.image_tag }}
+    secrets: inherit
+    

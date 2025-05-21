@@ -1,0 +1,31 @@
+name: Deploy to EKS
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        required: true
+        type: string
+      image_tag:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --region us-east-1 --name blog-app-cluster
+
+      - name: Deploy to EKS
+        env:
+          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+        run: |
+          kubectl set image deployment/fintech-app fintech-app=$ECR_REGISTRY/${{ inputs.image_name }}:${{ inputs.image_tag }}
+          kubectl rollout status deployment/fintech-app

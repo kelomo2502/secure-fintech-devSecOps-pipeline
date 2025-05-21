@@ -149,3 +149,44 @@ eksctl version
 ### 🎯 Goal
 
 #### Create and initialize a GitHub repository for storing application and infrastructure code
+
+`gh repo create secure-fintech-devSecOps-pipeline --public`
+
+### Clone and Set Up Project Locall
+
+`git clone git@github.com:githhub-name/secure-fintech-devSecOps-pipeline --public`
+
+### Initialize Directory Structure
+
+Root_folder
+├── kubernetes/
+│   └── helm/
+│       └── fintech-app/
+├── .github/
+│   └── workflows/
+├── terraform/
+├── README.md
+
+#### Add CI/CD Workflow File
+
+- Example: .github/workflows/deploy.yml should include:
+- Build Docker image
+- Test
+- Push to container registry (e.g., ECR)
+- Deploy to EKS via Helm/Kubectl
+
+#### Enable GitHub Actions
+
+- Push to main or develop branch.
+- Validate the workflow runs under Actions tab.
+
+#### Set Up Secrets in GitHub
+
+- Go to Settings → Secrets and variables → Actions
+- Add:
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - DOCKER_USERNAME / DOCKER_PASSWORD (if using DockerHub)
+  - EKS_CLUSTER_NAME
+  - AWS_ROLE_TO_ASSUME	IAM Role ARN for GitHub OIDC (if using)
+  - REGION
